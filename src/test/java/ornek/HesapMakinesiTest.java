@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 
 class HesapMakinesiTest {
 
+
+
     @Test
     public void testTopla() {
         // on hazirlik
@@ -16,10 +18,29 @@ class HesapMakinesiTest {
 
         // methodu calistirmak
         int toplam = hesapMakinesi.topla(sayi1, sayi2);
-
         // sonucu kontrol et
         Assertions.assertEquals(24, toplam);
+
     }
+
+    @Test
+    public void testCikart(){
+        HesapMakinesi hesapMakinesi = new HesapMakinesi();
+        Assertions.assertEquals(20, hesapMakinesi.cikart(50, 30));
+    }
+
+    @Test
+    void testSifirdanCikincaEksiOlur() {
+        HesapMakinesi hesapMakinesi = new HesapMakinesi();
+        Assertions.assertEquals(-15, hesapMakinesi.cikart(0, 15));
+    }
+
+    @Test
+    void testSayidanSifirCikincaSayiKalir() {
+        HesapMakinesi hesapMakinesi = new HesapMakinesi();
+        Assertions.assertEquals(15, hesapMakinesi.cikart(15, 0));
+    }
+
 
 
 
