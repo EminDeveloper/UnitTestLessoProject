@@ -1,10 +1,18 @@
-package com.lesson.unittest.customer.junit;
+package com.lesson.unittest.junit4;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 public class YasamDongusu {
+
+    @BeforeAll
+    static void beforeAll() {
+        System.out.println("Her test sinifi icin - oncesi");
+    }
+
+    @AfterAll
+    static void afterAll() {
+        System.out.println("Her test sinifi icin - sonrasi");
+    }
 
     @BeforeEach
     void setUp() {
@@ -24,5 +32,7 @@ public class YasamDongusu {
     @Test
     public void testHelloWorld2() {
         System.out.println("Test Hello World 2");
+
+
     }
 }

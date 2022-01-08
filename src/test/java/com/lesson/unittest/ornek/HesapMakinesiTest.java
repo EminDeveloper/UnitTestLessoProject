@@ -1,4 +1,4 @@
-package com.lesson.unittest.customer.ornek;
+package com.lesson.unittest.ornek;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;

@@ -3,7 +3,7 @@ package com.lesson.unittest.customer;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MusteriRepositoryStub extends MusteriRepository{
+public class MusteriRepositoryStub extends MusteriRepository {
 
     private Map<Integer, Musteri> musteriListesi = new HashMap<Integer, Musteri>();
 
@@ -16,12 +16,13 @@ public class MusteriRepositoryStub extends MusteriRepository{
     public void sil(Integer musteriId) {
         musteriListesi.remove(musteriId);
     }
+
     @Override
-    public Musteri bul(Integer musteriId){
+    public Musteri bul(Integer musteriId) {
         return musteriListesi.get(musteriId);
     }
 
-    public Map<Integer, Musteri> getMusteriListesi(){
-        return musteriListesi;
+    public void herseyiSil() {
+        musteriListesi.clear();
     }
 }

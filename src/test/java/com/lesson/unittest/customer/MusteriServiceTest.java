@@ -1,49 +1,56 @@
 package com.lesson.unittest.customer;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.testng.asserts.Assertion;
 
-class MusteriServiceTest {
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Mockito;
+
+import static org.junit.Assert.*;
+
+public class MusteriServiceTest {
 
     private MusteriService musteriService;
-//    private MusteriRepository musteriRepository = new MusteriRepository();
+
     private MusteriRepositoryStub musteriRepository = new MusteriRepositoryStub();
+
     private BilgilendirmeService bilgilendirmeService;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() throws Exception {
         musteriService = new MusteriService();
-//        musteriRepository = Mockito.mock(MusteriRepository.class);
         bilgilendirmeService = Mockito.mock(BilgilendirmeService.class);
         musteriService.setMusteriRepository(musteriRepository);
         musteriService.setBilgilendirmeService(bilgilendirmeService);
     }
 
+    @After
+    public void after() {
+        musteriRepository.herseyiSil();
+    }
+
     @Test
-    public void testMusteriKaydet(){
+    public void testMusteriSil() throws Exception {
+
+        musteriService.musteriKaydet(new Musteri(1234));
+
+        musteriService.musteriSil(1234);
+
+        assertNull(musteriRepository.bul(1234));
+    }
+
+    @Test
+    public void testMusteriKaydet() {
 
         Musteri musteri = new Musteri(1234);
 
         musteriService.musteriKaydet(musteri);
 
-        // kontrol etmeniz gerekiyor
-//        Mockito.verify(bilgilendirmeService).yeniKayitMailGonder(musteri);
-//        Assertions.assertTrue(musteriRepository.getMusteriListesi().containsValue(musteri));
-//        Mockito.verify(musteriRepository).kaydet(musteri);
-        Assertions.assertEquals(musteri, musteriRepository.bul(musteri.getId()));
+        assertEquals(musteri, musteriRepository.bul(musteri.getId()));
+        Mockito.verify(bilgilendirmeService).yeniKayitMailGonder(new Musteri(543543));
     }
 
-    @Test
-    public void testSil(){
 
-        Assertions.assertNotNull(musteriRepository.getMusteriListesi().get(1234));
 
-        musteriService.musteriSil(1234);
 
-        Assertions.assertNull(musteriRepository.bul(1234));
-    }
 }
