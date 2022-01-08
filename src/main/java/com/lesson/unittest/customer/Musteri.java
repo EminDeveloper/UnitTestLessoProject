@@ -1,0 +1,18 @@
+package com.lesson.unittest.customer;
+
+public class Musteri {
+
+    private Integer id;
+
+    public Musteri(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+}

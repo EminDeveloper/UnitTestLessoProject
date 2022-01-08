@@ -1,4 +1,4 @@
-package ornek;
+package com.lesson.unittest.customer.ornek;
 
 public class HesapMakinesi {
     public int topla(int sayi1, int sayi2){
